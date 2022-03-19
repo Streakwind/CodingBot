@@ -9,10 +9,10 @@ from humanize.time import precisedelta
 class Admin (commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
+
     async def cog_check(self, ctx):
         return await commands.is_owner().predicate(ctx)
-    
+
     @commands.command(hidden=True)
     async def reload(self, ctx, extension):
         """Reload an extension"""
@@ -48,7 +48,7 @@ class Admin (commands.Cog):
         await self.bot.change_presence(status=discord.Status.idle)
         emoji = '\N{THUMBS UP SIGN}'
         await ctx.message.add_reaction(emoji)
-        
+
     @commands.command(hidden=True)
     async def changeactdnd(self, ctx):
         """Changed the status to DND."""
@@ -56,7 +56,7 @@ class Admin (commands.Cog):
         #await ctx.send ("Success!")
         emoji = '\N{THUMBS UP SIGN}'
         await ctx.message.add_reaction(emoji)
-        
+
     @commands.command(hidden=True)
     async def changeactoff(self, ctx):
         """Changed the status to invisible."""
@@ -64,7 +64,7 @@ class Admin (commands.Cog):
         #await ctx.send ("Success!")
         emoji = '\N{THUMBS UP SIGN}'
         await ctx.message.add_reaction(emoji)
-    
+
     @commands.command(hidden=True)
     async def resetact(self, ctx):
         """Reset the status."""
@@ -72,7 +72,7 @@ class Admin (commands.Cog):
         emoji = '\N{THUMBS UP SIGN}'
         await ctx.message.add_reaction(emoji)
 
-        
+
     @commands.command(hidden=True)
     async def setplay(self, ctx, *, thing):
         """Set's a play status"""
@@ -81,7 +81,7 @@ class Admin (commands.Cog):
         emoji = '\N{THUMBS UP SIGN}'
         await ctx.message.add_reaction(emoji)
 
-        
+
     @commands.command(hidden=True)
     async def setwatch(self, ctx, *, thing):
         """Set's a watch status"""
@@ -90,7 +90,7 @@ class Admin (commands.Cog):
         emoji = '\N{THUMBS UP SIGN}'
         await ctx.message.add_reaction(emoji)
 
-        
+
     @commands.command(hidden=True)
     async def setlisten(self, ctx, *, thing):
         """Set's a listen status"""
@@ -98,15 +98,15 @@ class Admin (commands.Cog):
         emoji = '\N{THUMBS UP SIGN}'
         await ctx.message.add_reaction(emoji)
 
-        
+
     @commands.command(hidden=True)
     async def repeat(self, ctx, times: int, *, content='repeating...'):
         """Admin-only command for purge testing."""
         for i in range(times):
             await ctx.send(content)
-            
+
             await asyncio.sleep(1)
-    
+
     #JSK is better
     #@commands.command()
     #@commands.is_owner()
@@ -114,19 +114,19 @@ class Admin (commands.Cog):
     #    """Lets the bot play a game."""
     #    await self.bot.change_presence(status=discord.Status.{status} activity={game})
     #    await ctx.send ("Success!")
-   
+
     @commands.command(hidden=True)
     async def troll(self, ctx, userid:int, *, message):
         """troll"""
         person = self.bot.get_user(userid)
         await person.send(f"{message}")
         await ctx.send(f"Succesfully sent {message}")
-    
+
    # @commands.command(hidden = True)
     #async def reply(self, ctx, msgid, msg):
      #   """something"""
       #  message = ctx.channel.fetch_message(msgid)
-        
+
        # if len(msg) > 20:
        #     time = 2
        # if len(msg) <= 20:
@@ -135,13 +135,13 @@ class Admin (commands.Cog):
        #     time = 0.5
        # if len(msg) < 5:
        #     time = 0.25
-            
+
        # await ctx.message.delete()
-            
+
       #  async with ctx.typing():
        #     await asyncio.sleep(time)
         #    await message.reply(f"{msg}", mentionauthor = False)
-        
+
     @commands.command()
     async def debug_mode(self, ctx):
         """Turn debug mode on/off"""
@@ -149,12 +149,12 @@ class Admin (commands.Cog):
             self.bot.debugMode=False
             emoji = '\N{THUMBS UP SIGN}'
             await ctx.message.add_reaction(emoji)
-        
+
         else:
             self.bot.debugMode=True
             emoji = '\N{THUMBS UP SIGN}'
             await ctx.message.add_reaction(emoji)
-    
-        
+
+
 def setup(bot):
     bot.add_cog(Admin(bot))
