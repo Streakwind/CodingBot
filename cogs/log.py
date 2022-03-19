@@ -51,7 +51,7 @@ class Log (commands.Cog):
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(config.guild_webhook, adapter=AsyncWebhookAdapter(session))
 
-            if ctx.author.id != self.bot.bot_id:
+            if message_before.author.id != self.bot.bot_id:
 
                 embed = discord.Embed(title=f"{message_after.author} has edited a message!")
                 embed.add_field(name="TIME (UTC)", value=f"<t:{int(datetime.now().timestamp())}")
@@ -68,7 +68,7 @@ class Log (commands.Cog):
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(config.guild_webhook, adapter=AsyncWebhookAdapter(session))
 
-            if ctx.author.id != self.bot.bot_id:
+            if message.author.id != self.bot.bot_id:
                 embed = discord.Embed(title=f"{message.author} has deleted a message!")
                 embed.add_field(name="TIME (UTC)", value=f"<t:{int(datetime.now().timestamp())}")
                 embed.add_field(name="MESSAGE", value=f"{message.content}")
