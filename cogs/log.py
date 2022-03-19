@@ -51,7 +51,7 @@ class Log (commands.Cog):
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(config.guild_webhook, adapter=AsyncWebhookAdapter(session))
 
-            if ctx.author.id != self.bot_id:
+            if ctx.author.id != self.bot.bot_id:
 
                 embed = discord.Embed(title=f"{message_after.author} has edited a message!")
                 embed.add_field(name="TIME (UTC)", value=f"<t:{int(datetime.now().timestamp())}")
@@ -68,7 +68,7 @@ class Log (commands.Cog):
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(config.guild_webhook, adapter=AsyncWebhookAdapter(session))
 
-            if ctx.author.id != self.bot_id:
+            if ctx.author.id != self.bot.bot_id:
                 embed = discord.Embed(title=f"{message.author} has deleted a message!")
                 embed.add_field(name="TIME (UTC)", value=f"<t:{int(datetime.now().timestamp())}")
                 embed.add_field(name="MESSAGE", value=f"{message.content}")
@@ -103,7 +103,7 @@ class Log (commands.Cog):
             #if isinstance(error, ignored):
                 #return
 
-            embed = discord.Embed(title=f"Command Error - Time (UTC): <t:{int(ctx.message.created_at.timestamp)}>", description=f"Ignoring exception in command {ctx.command}", color=discord.Color.blue())
+            embed = discord.Embed(title=f"Command Error - Time (UTC): <t:{int(ctx.message.created_at.timestamp())}>", description=f"Ignoring exception in command {ctx.command}", color=discord.Color.blue())
             embed.set_thumbnail(url=ctx.author.avatar_url)
             embed.add_field(name="Error", value=f"`{str(error)}`")
             embed.add_field(name="Command User", value=f"{ctx.author} - {ctx.author.id}")
