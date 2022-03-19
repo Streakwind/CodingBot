@@ -54,7 +54,7 @@ class Log (commands.Cog):
             if message_before.author.id != self.bot.bot_id:
 
                 embed = discord.Embed(title=f"{message_after.author} has edited a message!")
-                embed.add_field(name="TIME (UTC)", value=f"<t:{int(datetime.now().timestamp())}")
+                embed.add_field(name="TIME (UTC)", value=f"<t:{int(datetime.timestamp(datetime.now()))}")
                 embed.add_field(name="LINK", value=f"{message_after.jump_url}")
                 embed.add_field(name="BEFORE", value=f"{message_before.content}", inline=True)
                 embed.add_field(name="AFTER", value=f"{message_after.content}", inline=True)
@@ -70,7 +70,7 @@ class Log (commands.Cog):
 
             if message.author.id != self.bot.bot_id:
                 embed = discord.Embed(title=f"{message.author} has deleted a message!")
-                embed.add_field(name="TIME (UTC)", value=f"<t:{int(datetime.now().timestamp())}")
+                embed.add_field(name="TIME (UTC)", value=f"<t:{int(datetime.timestamp(datetime.now()))}")
                 embed.add_field(name="MESSAGE", value=f"{message.content}")
                 embed.set_thumbnail(url=message.author.avatar_url)
                # await webhook.send(f"{message.author} has deleted a message.\nMessage: {message.content}", username = 'Guild Log')
