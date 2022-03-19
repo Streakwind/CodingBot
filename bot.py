@@ -32,7 +32,7 @@ class Monke(commands.Bot):
     def __init__(self):
         self.debugMode=False
         self.uptime=datetime.datetime.utcnow()
-        self.bot_id=736380975025619025
+        self.bot_id=954853701233836143
         self.bot_guild=871097075192954930
 
         super().__init__(
