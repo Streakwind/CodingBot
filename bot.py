@@ -13,7 +13,7 @@ import datetime
 description = ''''''
 
 def get_prefix(bot, message):
-  return ["a!", "coding "]
+  return ["a!", "coding ", "A!", "Coding "]
 
 intents = discord.Intents.default()
 intents.members = True
@@ -26,6 +26,7 @@ initial_extensions = (
     'cogs.information',
     'cogs.stats',
     'cogs.log',
+    'cogs.reactionroles',
 )
 
 class CodingBot(commands.Bot):

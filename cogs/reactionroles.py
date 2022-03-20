@@ -3,6 +3,7 @@ import discord
 
 class ReactionRoles (commands.Cog):
     def __init__(self, bot, *args, **kwargs):
+        self.bot = bot
         super().__init__(*args, **kwargs)
 
         self.role_message_id = 954873254709956699 # ID of the message that can be reacted to to add/remove a role.
