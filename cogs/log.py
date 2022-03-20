@@ -6,6 +6,7 @@ import aiohttp
 import sys
 from discord import Webhook, AsyncWebhookAdapter
 import datetime
+from datetime import datetime
 
 class Log (commands.Cog):
     def __init__(self, bot):
