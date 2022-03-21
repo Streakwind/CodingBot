@@ -164,7 +164,7 @@ class Admin (commands.Cog):
 
     @commands.command()
     async def whitelist(self, ctx, id):
-        """Whitelist"
+        """Whitelist"""
         self.blacklist.remove(id)
         emoji = '\N{THUMBS UP SIGN}'
         await ctx.message.add_reaction(emoji)
