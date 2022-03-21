@@ -173,7 +173,7 @@ class Admin (commands.Cog):
     async def blacklisted(self, ctx):
         """List"""
         for x in self.bot.blacklist:
-            print(x)
+            await ctx.send(x)
 
 
 def setup(bot):
