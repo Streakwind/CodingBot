@@ -12,41 +12,6 @@ class Log (commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.Cog.listener('on_message')
-    async def direct_message(self, message):
-        async with aiohttp.ClientSession() as session:
-            webhook = Webhook.from_url(config.logging_webhook, adapter=AsyncWebhookAdapter(session))
-            if message.guild is None:
-                if message.author.id != self.bot.bot_id:
-                    if message.author.id != self.bot.owner_id:
-                        embed = discord.Embed(title="DIRECT MESSAGE")
-                        embed.add_field(name="TIME (UTC)", value=f"<t:{int(message.created_at.timestamp())}>")
-                        embed.add_field(name="FROM", value=f"{message.author} ({message.author.id})")
-                        embed.add_field(name="MESSAGE", value=f"{message.content}")
-                        embed.set_thumbnail(url=message.author.avatar_url)
-                        #await webhook.send(f"```DIRECT MESSAGE\nTIME: {message.created_at}UTC\nFROM: {message.author} ({message.author.id})\nMESSAGE: {message.content}```", username='Direct Message Log')
-                        await webhook.send(embed = embed, username = "Direct Message Log")
-
-    @commands.Cog.listener('on_command')
-    async def logging(self, message):
-        async with aiohttp.ClientSession() as session:
-            webhook = Webhook.from_url(config.logging_webhook, adapter=AsyncWebhookAdapter(session))
-       #     channel = bot.get_channel(849678967639638057)
-
-            #channel.send("something")
-            destination = None
-            if message.guild != None:
-                if message.author.id != self.bot.owner_id:
-                    destination = f"#{message.channel} ({message.guild})"
-
-                    embed = discord.Embed(title=f"{destination}")
-                    embed.add_field(name="TIME (UTC)", value=f"<t:{int(message.created_at.timestamp())}>")
-                    embed.add_field(name="FROM", value=f"{message.author} ({message.author.id})")
-                    embed.add_field(name="MESSAGE", value=f"{message.content}")
-                    embed.set_thumbnail(url=message.author.avatar_url)
-                    #await webhook.send(f"```{destination}\nTIME: {ctx.message.created_at}UTC\nFROM: {message.author} ({message.author.id})\nMESSAGE: {ctx.message.content}```", username= 'Log')
-                    await webhook.send(embed=embed, username="Log")
-
     @commands.Cog.listener()
     async def on_message_edit(self, message_before, message_after):
         async with aiohttp.ClientSession() as session:

@@ -17,6 +17,7 @@ def get_prefix(bot, message):
 
 intents = discord.Intents.default()
 intents.members = True
+intents.message_content = True
 
 initial_extensions = (
     'cogs.admin',
