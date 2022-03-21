@@ -159,11 +159,15 @@ class Admin (commands.Cog):
     async def blacklist(self, ctx, id):
         """Blacklist"""
         self.blacklist.append(id)
+        emoji = '\N{THUMBS UP SIGN}'
+        await ctx.message.add_reaction(emoji)
 
     @commands.command()
     async def whitelist(self, ctx, id):
         """Whitelist"
         self.blacklist.remove(id)
+        emoji = '\N{THUMBS UP SIGN}'
+        await ctx.message.add_reaction(emoji)
 
 
 def setup(bot):
