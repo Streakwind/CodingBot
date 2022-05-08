@@ -20,7 +20,7 @@ class Information(commands.Cog):
         if not member:
             member = ctx.author
 
-        await ctx.send('{0.name} joined in {0.joined_at} UTC'.format(member))
+        await ctx.send('{0.name} joined in {int(0.joined_at.timestamp())} UTC'.format(member)) #<t:{int(member.created_at.timestamp())}>
 
     @commands.command()
     async def avatar(self, ctx, member: discord.User = None):
