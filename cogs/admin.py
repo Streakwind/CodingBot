@@ -154,6 +154,18 @@ class Admin (commands.Cog):
             self.bot.debugMode=True
             emoji = '\N{THUMBS UP SIGN}'
             await ctx.message.add_reaction(emoji)
+    @commands.command()
+    async def adv_mode(self, ctx):
+        """Turn advanced mode on/off"""
+        if self.bot.advMode:
+            self.bot.advMode=False
+            emoji = '\N{THUMBS UP SIGN}'
+            await ctx.message.add_reaction(emoji)
+
+        else:
+            self.bot.advMode=True
+            emoji = '\N{THUMBS UP SIGN}'
+            await ctx.message.add_reaction(emoji)
 
     @commands.command()
     async def blacklist(self, ctx, id):

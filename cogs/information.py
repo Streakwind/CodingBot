@@ -9,6 +9,37 @@ import sys
 from typing import Union
 import datetime
 
+#from Fyssions Clam
+class GlobalUser(commands.Converter):
+    async def convert(self, ctx, arg):
+        try:
+            if not ctx.guild:
+                raise commands.BadArgument()  # blank to skip
+            user = await commands.MemberConverter().convert(ctx, arg)
+
+        except commands.BadArgument:
+            try:
+                user = await commands.UserConverter().convert(ctx, arg)
+
+            except commands.BadArgument:
+                try:
+                    arg = int(arg)
+
+                except ValueError:
+                    arg = discord.utils.escape_mentions(arg)
+                    raise commands.BadArgument(
+                        f"Could not find a member or user `{arg}` with that name. Try with their ID instead."
+                    )
+                try:
+                    user = await ctx.bot.fetch_user(arg)
+
+                except discord.HTTPException:
+                    raise commands.BadArgument(
+                        f"Could not find a member or user with the ID of `{arg}`."
+                    )
+
+        return user
+        
 class Information(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
