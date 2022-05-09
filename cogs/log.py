@@ -86,7 +86,10 @@ class Log (commands.Cog):
 
                 await ctx.send(embed=embed_1)
                 return
-
+            if self.bot.advMode:
+                await ctx.send(embed=embed)
+                return
+                
             if isinstance(error, commands.CommandNotFound):
                 if not self.bot.debugMode:
                     return await ctx.send(":x: Command not found")

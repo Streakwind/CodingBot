@@ -32,10 +32,11 @@ initial_extensions = (
 class CodingBot(commands.Bot):
     def __init__(self):
         self.debugMode=False
+        self.advMode=False
         self.uptime=datetime.datetime.utcnow()
         self.bot_id=954853701233836143
         self.bot_guild=871097075192954930
-        self.blacklist=[0]
+        self.blacklist=[]
 
         super().__init__(
             command_prefix=get_prefix,

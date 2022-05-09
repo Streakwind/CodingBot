@@ -7,6 +7,8 @@ import youtube_dl
 
 from discord.ext import commands
 
+import asqlite
+
 # Suppress noise about console usage from errors
 youtube_dl.utils.bug_reports_message = lambda: ''
 
@@ -124,6 +126,6 @@ class Music(commands.Cog):
                 raise commands.CommandError("Author not connected to a voice channel.")
         elif ctx.voice_client.is_playing():
             ctx.voice_client.stop()
-            
+
 def setup(bot):
     bot.add_cog(Music(bot))
